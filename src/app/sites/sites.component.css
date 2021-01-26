@@ -1,0 +1,25 @@
+:host{
+  display: block;
+  margin-top: 1rem;
+}
+.info-text{
+  text-align: center;
+}
+
+.red{
+  color:red;
+}
+.green{
+  color:green;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+

@@ -1,0 +1,27 @@
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.mat-raised-button.mat-primary{
+  background-color: #1976d2;
+}
+mat-card-header{
+  background: #599091;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  color:white;
+  margin-top: 15px;
+}
+
+mat-card-content{
+  padding: 10px;
+}
+
+mat-card{
+  padding:0;
+}

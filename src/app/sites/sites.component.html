@@ -1,0 +1,20 @@
+<mat-accordion multi="true" *ngIf="sites.length > 0">
+  <mat-expansion-panel *ngFor="let site of sites">
+    <mat-expansion-panel-header>
+
+      <mat-panel-title>
+        {{site.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" [className]="getStatusClass(site)" style="margin-left: 5px;">circle</mat-icon>
+      </mat-panel-description>
+
+    </mat-expansion-panel-header>
+    <p>{{site.active}}</p>
+    <mat-action-row>
+      <button mat-raised-button color="primary">EDIT</button>
+      <button mat-raised-button color="warn">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p *ngIf="sites.length === 0" class="mat-body-1 info-text">No sites added yet!</p>

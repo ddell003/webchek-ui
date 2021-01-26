@@ -1,27 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AppComponent {
-  title = 'webchek-ui';
-  userIsAuthenticated = false;
-
-  private authListenerSubs: Subscription;
+export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService) { }
 
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
   ngOnInit(): void {
-    this.authService.autoAuthUser();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
-        console.log("isAuth", isAuthenticated)
         this.userIsAuthenticated = isAuthenticated;
       });
   }
@@ -33,4 +30,5 @@ export class AppComponent {
   onLogout(){
     this.authService.logout();
   }
+
 }
