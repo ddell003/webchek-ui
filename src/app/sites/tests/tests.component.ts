@@ -4,6 +4,7 @@ import { StatusCode } from 'src/app/models/statusCode.model';
 import { Test } from 'src/app/models/test.model';
 import { SitesService } from 'src/app/services/sites.service';
 import * as moment from 'moment';
+import { Log } from 'src/app/models/log.model';
 
 @Component({
   selector: 'app-tests',
@@ -27,7 +28,6 @@ export class TestsComponent implements OnInit {
     frequency_amount:"",
     expected_status_code:"200",
     created_at:null,
-    latest:{}
   }
   constructor(private siteService: SitesService) {}
 
@@ -119,12 +119,10 @@ export class TestsComponent implements OnInit {
 
   run(test:Test) {
     this.siteService.runTest(test)
-    .subscribe((body)=> {
+    .subscribe((body: Log)=> {
       console.log("test ran", body)
       const index = this.site.tests.findIndex(value =>value.id == test.id)
       this.site.tests[index].latest = body;
-      console.log("index", index);
-      console.log(this.site.tests[index]);
     });
   }
 

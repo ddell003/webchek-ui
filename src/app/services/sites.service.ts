@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { StatusCode } from '../models/statusCode.model';
 import { Test } from '../models/test.model';
+import { Log } from '../models/log.model';
 
 
 const URL = environment.apiUrl;
@@ -65,7 +66,7 @@ export class SitesService {
   }
 
   runTest(test: Test) {
-    return this.http.post<Test>(`${URL}test/${test.id}/run`, {});
+    return this.http.post<Log>(`${URL}test/${test.id}/run`, {});
   }
 
   deleteTest(test: Test) {

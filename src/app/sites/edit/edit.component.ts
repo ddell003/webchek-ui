@@ -4,6 +4,7 @@ import { ParamMap, Router, ActivatedRoute } from '@angular/router';
 import { Site } from 'src/app/models/site.model';
 import { StatusCode } from 'src/app/models/statusCode.model';
 import { Test } from 'src/app/models/test.model';
+import { Log } from 'src/app/models/log.model';
 import { SitesService } from 'src/app/services/sites.service';
 import * as moment from 'moment';
 
@@ -30,7 +31,7 @@ export class EditComponent implements OnInit {
     frequency_amount:"",
     expected_status_code:"200",
     created_at:null,
-    latest:{}
+
   }
 
   constructor(public siteService: SitesService, private router: Router, private route:ActivatedRoute) { }
