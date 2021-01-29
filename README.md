@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
+## Connecting to API
+
+1. Follow the docs to set up the API [API Repository](https://github.com/ddell003/webchek-api). 
+2. Copy the server url into environments/environments.ts and update the calue for apiUrl if needed
+3. Run ng -serve
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

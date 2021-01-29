@@ -11,3 +11,18 @@ textarea {
   margin-right:1rem;
 }
 
+.blink{
+  color:green;
+  animation: blink 2s ease-in infinite;
+}
+.black{
+  color:#212529;
+}
+.mat-expansion-panel-header-description, .mat-icon {
+  color:#212529;
+}
+@keyframes blink {
+  from, to { opacity: 1 }
+  50% { opacity: 0 }
+}
+

@@ -1,56 +1,61 @@
 <!--<textarea rows="6" [value]="newSite" #siteName></textarea> reference, then call siteName.value-->
 <!--2 way binding 599091-->
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Create New Site</mat-card-title>
+<div class="row">
+  <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Create New Site</mat-card-title>
 
-  </mat-card-header>
-  <form (submit)="onAddSite(siteForm)" #siteForm="ngForm">
-    <mat-form-field>
+      </mat-card-header>
+      <form (submit)="onAddSite(siteForm)" #siteForm="ngForm">
+        <mat-form-field>
 
-      <input
-      type="text"
-      matInput
-      ngModel
-      name="name"
-      required
-      minlength=3
-      #title="ngModel"
-      placeholder="Enter Name"
-      >
-      <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Status</mat-label>
-      <mat-select
-      ngModel
-      required
-      name="active"
-      #status="ngModel"
-      >
-        <mat-option value="1">Active</mat-option>
-        <mat-option value="0">Inactive</mat-option>
-      </mat-select>
-      <mat-error *ngIf="status.invalid">Please select a status</mat-error>
-    </mat-form-field>
-<!--
-    <mat-form-field>
+          <input
+          type="text"
+          matInput
+          ngModel
+          name="name"
+          required
+          minlength=3
+          #title="ngModel"
+          placeholder="Enter Name"
+          >
+          <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select
+          ngModel
+          required
+          name="status"
+          #status="ngModel"
+          >
+            <mat-option value="1">Active</mat-option>
+            <mat-option value="0">Inactive</mat-option>
+          </mat-select>
+          <mat-error *ngIf="status.invalid">Please select a status</mat-error>
+        </mat-form-field>
+    <!--
+        <mat-form-field>
 
-      <textarea
-        rows="6"
-        matInput
-        ngModel
-        name="content" r
-        equired minlength=3
-        #content="ngModel"
-        placeholder="Enter Content"
-      ></textarea>
-      <mat-error *ngIf="content.invalid">Please enter content</mat-error>
-    </mat-form-field>-->
-    <br>
-    <button mat-raised-button color="primary" type="submit">Save Site</button>
-  </form>
+          <textarea
+            rows="6"
+            matInput
+            ngModel
+            name="content" r
+            equired minlength=3
+            #content="ngModel"
+            placeholder="Enter Content"
+          ></textarea>
+          <mat-error *ngIf="content.invalid">Please enter content</mat-error>
+        </mat-form-field>-->
+        <br>
+        <button mat-raised-button color="primary" type="submit">Save Site</button>
+        <button mat-raised-button color="warn" style="margin-left: 5px;" (click)="cancel()">Cancel</button>
+      </form>
 
-</mat-card>
+    </mat-card>
+  </div>
+</div>
 

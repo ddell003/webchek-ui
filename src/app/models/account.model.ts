@@ -1,6 +1,6 @@
-export interface Site {
+export interface Account {
   name: string;
-  fullname: number;
+  fullname: string;
   email: string;
   password: string;
 }

@@ -1,50 +1,47 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<div class="row">
+  <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <form (submit)="loginUser(siteForm)" #siteForm="ngForm">
+        <mat-form-field>
 
-<div class="container">
-  <div class="row">
-    <div class="col col-md-6 offset-md-3">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-        <form (submit)="loginUser(siteForm)" #siteForm="ngForm">
-          <mat-form-field>
+          <input
+          type="email"
+          matInput
+          ngModel
+          name="email"
+          required
+          minlength=3
+          #email="ngModel"
+          placeholder="Enter Email"
+          >
+          <mat-error *ngIf="email.invalid">Please enter valid email</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
 
-            <input
-            type="email"
-            matInput
-            ngModel
-            name="email"
-            required
-            minlength=3
-            #email="ngModel"
-            placeholder="Enter Email"
-            >
-            <mat-error *ngIf="email.invalid">Please enter valid email</mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-
-            <input
-            type="password"
-            matInput
-            ngModel
-            name="password"
-            required
-            minlength=3
-            #password="ngModel"
-            placeholder="Enter Password"
-            >
-            <mat-error *ngIf="email.invalid">Please enter your password</mat-error>
-          </mat-form-field>
-          <br><br>
-          <button mat-raised-button color="primary" type="submit">Login</button>
-      </form>
-      </mat-card-content>
-      </mat-card>
-    </div>
-
+          <input
+          type="password"
+          matInput
+          ngModel
+          name="password"
+          required
+          minlength=3
+          #password="ngModel"
+          placeholder="Enter Password"
+          >
+          <mat-error *ngIf="email.invalid">Please enter your password</mat-error>
+        </mat-form-field>
+        <br><br>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+    </mat-card-content>
+    </mat-card>
   </div>
 
 </div>
+
+

@@ -1,5 +1,8 @@
+import { Test } from "./test.model";
+
 export interface Site {
   name: string;
-  active: number;
+  status: number;
   id:number;
+  tests?:Test[];
 }

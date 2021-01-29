@@ -1,5 +1,6 @@
 import { Component, OnInit,} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Site } from 'src/app/models/site.model';
 import { SitesService } from 'src/app/services/sites.service';
 
@@ -10,11 +11,15 @@ import { SitesService } from 'src/app/services/sites.service';
 })
 export class CreateComponent implements OnInit {
 
-  newSite:Site = {id:null, name:"", active:1};
+  newSite:Site = {id:null, name:"", status:1};
 
-  constructor(public siteService: SitesService) { }
+  constructor(public siteService: SitesService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  cancel() {
+    this.router.navigate(["/"]);
   }
 
   onAddSite(form: NgForm){
@@ -23,10 +28,11 @@ export class CreateComponent implements OnInit {
     }
       console.log("post added", form.value)
       this.newSite.name = form.value.name;
-      this.newSite.active = form.value.active;
+      this.newSite.status = form.value.status;
       this.siteService.addSite(this.newSite);
-      this.newSite = {name:"", active:1, id:null};
+      this.newSite = {name:"", status:1, id:null};
       form.resetForm();
+      this.router.navigate(["/"]);
 
 
   }

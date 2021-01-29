@@ -23,3 +23,17 @@
   align-items: center;
 }
 
+.blink{
+  color:green;
+  animation: blink 2s ease-in infinite;
+}
+.black{
+  color:#212529;
+}
+
+@keyframes blink {
+  from, to { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+

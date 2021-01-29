@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
 
@@ -13,7 +14,7 @@ export class AppComponent {
 
   private authListenerSubs: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.autoAuthUser();
@@ -32,5 +33,9 @@ export class AppComponent {
 
   onLogout(){
     this.authService.logout();
+  }
+
+  showSites(){
+    return this.userIsAuthenticated;
   }
 }
