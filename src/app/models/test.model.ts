@@ -1,3 +1,5 @@
+import { Log } from "./log.model";
+
 export interface Test {
   id: string;
   app_id:number;
@@ -8,6 +10,6 @@ export interface Test {
   frequency:string;
   frequency_amount:string;
   url:string;
-  latest:{};
+  latest?:Log;
 
 }

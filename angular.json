@@ -21,7 +21,9 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/netlify.toml",
+              "src/_redirects"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -118,6 +120,14 @@
             "production": {
               "devServerTarget": "webchek-ui:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/webchek-ui",
+            "netlifyToken": "",
+            "siteId": "372f9d63-3280-4e6e-96b4-6564d21085e5"
           }
         }
       }
