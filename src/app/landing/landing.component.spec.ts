@@ -1,4 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { EntranceComponent } from '../entrance/entrance.component';
 
 import { LandingComponent } from './landing.component';
 
@@ -8,7 +12,9 @@ describe('LandingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandingComponent ]
+      declarations: [ LandingComponent ],
+      imports: [HttpClientModule,RouterTestingModule],
+      providers: [HttpClientModule, RouterTestingModule,EntranceComponent],
     })
     .compileComponents();
   });

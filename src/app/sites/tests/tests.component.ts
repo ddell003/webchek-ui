@@ -36,10 +36,11 @@ export class TestsComponent implements OnInit {
   @Input() dashboard:boolean = false;
 
   ngOnInit(): void {
-    console.log("test component", this.site)
     this.statusCodes = this.siteService.getStatusCodes();
     this.newTest = JSON.parse(JSON.stringify(this.defaultTest));
-    this.newTest.app_id = this.site.id;
+    if(this.site){
+      this.newTest.app_id = this.site.id;
+    }
   }
 
   addTest(){
@@ -118,11 +119,17 @@ export class TestsComponent implements OnInit {
   }
 
   run(test:Test) {
+    if(! test){
+      return
+    }
     this.siteService.runTest(test)
     .subscribe((body: Log)=> {
       console.log("test ran", body)
       const index = this.site.tests.findIndex(value =>value.id == test.id)
-      this.site.tests[index].latest = body;
+      if(this.site && this.site.tests.length > 0){
+        this.site.tests[index].latest = body;
+      }
+
     });
   }
 

@@ -28,7 +28,9 @@ export class AppComponent {
   }
 
   ngOnDestroy(): void {
-    this.authListenerSubs.unsubscribe();
+    if(this.authListenerSubs){
+      this.authListenerSubs.unsubscribe();
+    }
   }
 
   onLogout(){

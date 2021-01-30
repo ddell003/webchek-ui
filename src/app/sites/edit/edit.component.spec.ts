@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { EditComponent } from './edit.component';
 
@@ -8,6 +11,8 @@ describe('EditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatDialogModule, RouterTestingModule],
+      providers: [HttpClientModule, MatDialogModule],
       declarations: [ EditComponent ]
     })
     .compileComponents();
