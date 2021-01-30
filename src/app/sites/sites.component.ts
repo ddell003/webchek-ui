@@ -41,11 +41,10 @@ export class SitesComponent implements OnInit, OnDestroy {
   }
 
   hasStatus(status, tests: Test[]) {
-    /*
-    hasFailures:boolean = false;
-  hasSuccesses:boolean = false;
-  hasRunning:boolean = false;
-  hasNew:boolean = false;*/
+
+    if(! tests){
+      return
+    }
   if(tests.length === 0 ){
     return false;
   }
