@@ -19,6 +19,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { EditComponent } from './sites/edit/edit.component';
 import { TestsComponent } from './sites/tests/tests.component';
+import { EntranceComponent } from './entrance/entrance.component';
 
 
 
@@ -37,6 +38,7 @@ import { TestsComponent } from './sites/tests/tests.component';
     ErrorComponent,
     EditComponent,
     TestsComponent,
+    EntranceComponent,
   ],
   imports: [
     BrowserModule,
