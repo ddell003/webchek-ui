@@ -3,6 +3,7 @@ import { Site } from '../models/site.model';
 import { SitesService } from '../services/sites.service';
 import {Subscription} from 'rxjs';
 import { Test } from '../models/test.model';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-sites',
@@ -38,6 +39,14 @@ export class SitesComponent implements OnInit, OnDestroy {
 
     const failed = ""
     return site.status == 1 ? "green":"red";
+  }
+
+  showNoTests(site) {
+    if(! site){
+      return;
+    }
+
+    return site && site.tests.length == 0 && site.status == 1
   }
 
   hasStatus(status, tests: Test[]) {

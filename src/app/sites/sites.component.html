@@ -21,7 +21,7 @@
               <span *ngIf="site.status == 0" class="red">
                   [Inactive]
               </span>
-              <span *ngIf="site.tests.length == 0 && site.status == 1" class="red">
+              <span *ngIf="showNoTests(site)" class="red">
                 [No Tests]
             </span>
             </mat-panel-description>

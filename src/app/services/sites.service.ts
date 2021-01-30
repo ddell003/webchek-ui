@@ -57,9 +57,9 @@ export class SitesService {
   }
 
   addSite(site:Site) {
-    this.http.post<Site[]>(SITE_URL, site)
-      .subscribe((body)=> {
-        this.sites.push(site)
+    this.http.post<Site>(SITE_URL, site)
+      .subscribe((body:Site)=> {
+        this.sites.push(body)
         this.siteUpdated.next([...this.sites]);
 
       });
