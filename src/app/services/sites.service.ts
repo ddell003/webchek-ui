@@ -79,4 +79,8 @@ export class SitesService {
   getSiteListener() {
     return this.siteUpdated.asObservable();
   }
+
+  testUrl(testUrl:string) {
+    return this.http.post(`${URL}test_url`, {url:testUrl});
+  }
 }

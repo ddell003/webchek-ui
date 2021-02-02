@@ -35,3 +35,35 @@ mat-card{
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.mat-toolbar.mat-primary, .mat-raised-button.mat-primary{
+  background-color: #1976d2;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.mat-toolbar-single-row{
+background-color: white;
+margin-top: -1rem;
+}
+h3, h2{
+  font-weight: 500;
+
+}
+

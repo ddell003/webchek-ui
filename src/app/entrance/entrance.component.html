@@ -1,8 +1,24 @@
+<mat-toolbar color="">
+  <span>
+    <a routerLink="/">WebChek <img src="../../assets/img/logoSmall.png" height="60px" width="70"></a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <a mat-raised-button color="primary" routerLink="/login" routerLinkActive="mat-accent" style="margin-right: 3px;">Login</a>
+    </li>
+    <li>
+      <a mat-raised-button color="primary" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+    </li>
+  </ul>
+
+</mat-toolbar>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<br><br>
+<br><br><br><br>
   <div class="row">
 
-    <mat-card id="card" style="text-align: center;" class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+    <!--<mat-card id="card" style="text-align: center;" class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
 
       <mat-card-title style="background-color: #1976d2; margin-top: 0; padding-top: 15px; padding-bottom: 15px; color:white">
         Welcome To WebChek
@@ -13,8 +29,78 @@
         <button mat-raised-button color="primary" style="margin-right:5px;" routerLink="/signup" >Signup</button>
 
       </mat-card-content>
-      </mat-card>
+      </mat-card>-->
+
+      <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3" style="text-align: center;">
+        <h1 style="color: #1976d2; font-size: 2.5rem;"><strong>WebChek</strong></h1>
+        <h2>Check Your Websites Health</h2>
+        <h2>Be the first one to know when a failure occurs</h2>
+        <div class="row">
+          <div class="col col-lg-6 col-sm-12 offset-lg-2" >
+            <mat-form-field class="" style="width: 100%;" appearance="fill">
+              <mat-label>URL</mat-label>
+              <input type="email"  [(ngModel)]="url" matInput placeholder="Enter URL">
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-2 col-sm-12">
+            <button mat-raised-button color="primary" style="margin-right:15px;" type="button" (click)="testUrl()">Check Now</button>
+          </div>
+
+        </div>
+        <div class="row" *ngIf="! fetchingTest">
+          <div class="col col-lg-12 alert alert-success" role="alert" *ngIf="statusCode && [200,201].includes(statusCode)">
+            {{statusCode}} - Your Website is up and running!
+          </div>
+          <div class="col col-lg-12 alert alert-danger" role="alert" *ngIf="statusCode && ![200,201].includes(statusCode)">
+            {{statusCode}} - There is an issue with your website!
+          </div>
+          <br>
+          <div class="col col-lg-12 alert alert-info" role="alert" *ngIf="statusCode">
+           Signup Today To Automate This Test <a mat-raised-button color="primary" routerLink="/signup" routerLinkActive="mat-accent" style="float: right;">Signup</a>
+          </div>
+
+        </div>
+        <div class="row" *ngIf="fetchingTest">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
   </div>
+
+<div class="row  h-50" style="background-color: #1976d2; color: white; padding-top: 100px; padding-bottom: 200px; margin-top: 50px;">
+  <div class="col-lg-4">
+      <div class="row">
+          <div class="col col-lg-8 offset-lg-2 col-md-12">
+            <h2> <mat-icon style="font-size: 30px; float:left">search</mat-icon>  <span style="padding-left:15px">Enhanced SEO</span></h2>
+            <p>
+              View the optimization of your website in just a few clicks with our intuitive user-friendly design
+            </p>
+          </div>
+      </div>
+
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <div class="col col-lg-8 offset-lg-2 col-md-12">
+        <h2> 	<mat-icon style="font-size: 30px;">description</mat-icon>  <span style="padding-left:15px">Automated Reports</span></h2>
+        <p>
+          Set up your report criteria and schedule audit reports to get status updates whenever you want
+        </p>
+      </div>
+  </div>
+
+</div>
+<div class="col-lg-4">
+  <div class="row">
+    <div class="col col-lg-8 offset-lg-2 col-md-12">
+      <h2> <mat-icon style="font-size: 30px;">business_center</mat-icon>  <span style="padding-left:15px"> Health Checks</span></h2>
+      <p>
+       Be the first to know when an issue occurs with out 24/7 health monitor that constantly keeps an eye on your site so that you don't have to
+      </p>
+    </div>
+
+  </div>
+</div>
+</div>
 
 
 
