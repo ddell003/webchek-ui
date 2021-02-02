@@ -76,5 +76,16 @@ export class SitesComponent implements OnInit, OnDestroy {
     return found;
   }
 
+  deleteSite(site: Site) {
+    if(confirm("Are you sure you want to delete the site: "+site.name)) {
+      const index = this.sites.findIndex(value =>value.id == site.id)
+      this.sites.splice(index, 1);
+      this.siteService.deleteSite(site)
+      .subscribe((body)=> {
+        console.log("site deleted")
+      });
+    }
+  }
+
 
 }

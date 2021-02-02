@@ -20,6 +20,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { EditComponent } from './sites/edit/edit.component';
 import { TestsComponent } from './sites/tests/tests.component';
 import { EntranceComponent } from './entrance/entrance.component';
+import { EditTestComponent } from './sites/tests/edit/edit.component';
+import { LogsComponent } from './sites/tests/logs/logs.component';
 
 
 
@@ -39,6 +41,8 @@ import { EntranceComponent } from './entrance/entrance.component';
     EditComponent,
     TestsComponent,
     EntranceComponent,
+    EditTestComponent,
+    LogsComponent,
   ],
   imports: [
     BrowserModule,
