@@ -110,6 +110,12 @@ export class TestsComponent implements OnInit {
   uploadTest(){
     console.log("submit form", this.newTest)
     this.createTest = false;
+    if(this.newTest.frequency === "minutes"){
+      this.newTest.frequency_amount = "15";
+    }
+    else{
+      this.newTest.frequency_amount = "1";
+    }
     this.siteService.createTest(this.newTest)
       .subscribe((body)=> {
         console.log("test created", body)

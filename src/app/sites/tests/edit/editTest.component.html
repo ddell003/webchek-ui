@@ -1,0 +1,108 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="row">
+  <div class="col col-lg-2 offset-lg-5 col-md-6 offset-md-3">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </div>
+</div>
+  <div class="row" *ngIf="! isLoading">
+    <div class="col col-lg-8 offset-lg-2 col-md-12">
+      <mat-card>
+        <mat-card-header style="display:flex">
+          <mat-card-title>Edit Test: {{test.name}} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (submit)="saveTest(testForm)" #testForm="ngForm">
+            <div class="row">
+              <div class="col col-lg-4 col-md-6">
+                <mat-form-field class="col col-lg-12">
+                  <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="test.name"
+                  name="testName"
+                  required
+                  minlength=3
+                  #testName="ngModel"
+                  placeholder="Name"
+                  >
+                  <mat-error *ngIf="testName.invalid">Please enter a test name</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col col-lg-3 col-md-6">
+                <mat-form-field class="col col-lg-12">
+                  <mat-label>Test Frequency Type</mat-label>
+                  <mat-select
+                  ngModel
+                  required
+                  name="frequency"
+                  #frequency="ngModel"
+                  [(ngModel)]="test.frequency"
+                  >
+                    <mat-option value="minutes">15 Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
+                    <mat-option value="hours">Hour</mat-option>
+                    <mat-option value="days">Day</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="frequency.invalid">Please select a frequency</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col col-lg-3 col-md-6">
+                <mat-form-field class="col col-lg-12">
+                  <mat-label>Sucess Criteria</mat-label>
+                  <mat-select
+                  ngModel
+                  required
+                  name="expected_status_code"
+                  #status="ngModel"
+                  [(ngModel)]="test.expected_status_code"
+
+                  >
+                    <mat-option *ngFor="let statusCode of statusCodes;"
+
+                    [value]="statusCode.code">{{statusCode.code}} - {{statusCode.text}}
+                  </mat-option>
+
+                  </mat-select>
+                  <mat-error *ngIf="status.invalid">Please select a status</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col col-lg-4 col-md-6">
+                <mat-form-field class="col col-lg-12">
+                  <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="test.url"
+                  name="url"
+                  required
+                  minlength=3
+                  #url="ngModel"
+                  placeholder="Enter Test Url"
+                  >
+                  <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col col-lg-12">
+                <mat-form-field class="col col-lg-12">
+                  <mat-label>Curl Request</mat-label>
+                  <textarea matInput rows="4"></textarea>
+                </mat-form-field>
+
+              </div>
+            </div>
+
+            <button mat-raised-button color="primary" type="submit">Save Site</button>
+            <button mat-raised-button color="warn" style="margin-left: 5px;" (click)="cancel()">Cancel</button>
+          </form>
+          <br>
+          <hr>
+          <app-logs [logs]="test.logs"></app-logs>
+        </mat-card-content>
+
+
+      </mat-card>
+    </div>
+
+  </div>
+
+
+
+

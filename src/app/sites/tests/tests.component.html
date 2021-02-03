@@ -34,25 +34,9 @@
                 <mat-error *ngIf="testName.invalid">Please enter a test name</mat-error>
               </mat-form-field>
             </div>
-            <div class="col col-lg-2 col-md-6">
-              <mat-form-field class="col col-lg-12">
-                <input
-                type="number"
-                matInput
-                ngModel
-                name="frequencyAmount"
-                required
-                minlength=3
-                #frequencyAmount="ngModel"
-                placeholder="Frequency Amount ex. 15"
-                [(ngModel)]="newTest.frequency_amount"
-                >
-                <mat-error *ngIf="frequencyAmount.invalid">Please frequency amount</mat-error>
-              </mat-form-field>
-            </div>
             <div class="col col-lg-3 col-md-6">
               <mat-form-field class="col col-lg-12">
-                <mat-label>Frequency Type</mat-label>
+                <mat-label>Test Frequency</mat-label>
                 <mat-select
                 ngModel
                 required
@@ -60,9 +44,9 @@
                 #frequency="ngModel"
                 [(ngModel)]="newTest.frequency"
                 >
-                  <mat-option value="minutes">Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
-                  <mat-option value="hours">Hours</mat-option>
-                  <mat-option value="days">Days</mat-option>
+                  <mat-option value="minutes">15 Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
+                  <mat-option value="hours">Hour</mat-option>
+                  <mat-option value="days">Day</mat-option>
                 </mat-select>
                 <mat-error *ngIf="frequency.invalid">Please select a frequency</mat-error>
               </mat-form-field>
@@ -154,7 +138,7 @@
             <button mat-raised-button [matMenuTriggerFor]="menu" type="button" color="primary">Actions</button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item type="button" (click)="run(test)">Run</button>
-              <button mat-menu-item type="button" (click)="run(test)">Edit</button>
+              <button mat-menu-item type="button" [routerLink]="'../../'+test.app_id+'/tests/'+test.id">Edit</button>
               <button mat-menu-item type="button" (click)="deleteTest(test)">Delete</button>
             </mat-menu>
           </td>

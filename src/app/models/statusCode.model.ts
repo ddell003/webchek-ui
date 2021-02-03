@@ -1,4 +1,4 @@
 export interface StatusCode {
-  code: number;
+  code: string;
   text: string;
 }

@@ -20,7 +20,12 @@ import { AngularMaterialModule } from './angular-material.module';
 import { EditComponent } from './sites/edit/edit.component';
 import { TestsComponent } from './sites/tests/tests.component';
 import { EntranceComponent } from './entrance/entrance.component';
+<<<<<<< HEAD
 // import { UsersComponent } from './users/users.component';
+=======
+import { EditTestComponent } from './sites/tests/edit/edit.component';
+import { LogsComponent } from './sites/tests/logs/logs.component';
+>>>>>>> 25deaf97af1b3e57a8fc457199de0b1f349cdb43
 
 
 
@@ -40,7 +45,12 @@ import { EntranceComponent } from './entrance/entrance.component';
     EditComponent,
     TestsComponent,
     EntranceComponent,
+<<<<<<< HEAD
     // UsersComponent,
+=======
+    EditTestComponent,
+    LogsComponent,
+>>>>>>> 25deaf97af1b3e57a8fc457199de0b1f349cdb43
   ],
   imports: [
     BrowserModule,

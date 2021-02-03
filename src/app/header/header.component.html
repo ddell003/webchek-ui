@@ -1,19 +1,13 @@
 <mat-toolbar color="primary">
   <span>
-    <a routerLink="/">WebChek</a>
+    <a routerLink="/">WebChek <img src="../../assets/img/logoSmall.png" height="60px" width="70"></a>
   </span>
   <span class="spacer"></span>
   <ul>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-    </li>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
+    <li>
       <a mat-button routerLink="/sites/create" routerLinkActive="mat-accent">Create Site</a>
     </li>
-    <li *ngIf="userIsAuthenticated">
+    <li>
       <button mat-button (click)="onLogout()">Logout</button>
     </li>
 

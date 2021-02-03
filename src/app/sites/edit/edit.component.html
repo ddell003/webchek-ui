@@ -9,8 +9,8 @@
   <div class="row" *ngIf="!isLoading">
     <div class="col col-lg-8 offset-lg-2 col-md-12">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>Edit Site: {{site.name}}</mat-card-title>
+        <mat-card-header style="display:flex">
+          <mat-card-title>Edit Site: {{site.name}} </mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <form (submit)="onAddSite(siteForm)" #siteForm="ngForm">

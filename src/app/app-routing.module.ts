@@ -6,7 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { AuthGuard } from './services/auth.guard';
 import { CreateComponent } from './sites/create/create.component';
 import { EditComponent } from './sites/edit/edit.component';
-// import { UsersComponent } from './users/users.component';
+import { EditTestComponent } from './sites/tests/edit/edit.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'sites/create', component: CreateComponent, canActivate:[AuthGuard]},
   { path: 'sites/edit/:id', component: EditComponent, canActivate:[AuthGuard]},
-  // { path: 'users', component: UsersComponent},
+
+  { path: 'sites/:siteId/tests/:id', component: EditTestComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
