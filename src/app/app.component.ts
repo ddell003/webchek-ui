@@ -22,13 +22,13 @@ export class AppComponent {
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
-        console.log("isAuth", isAuthenticated)
+        console.log('isAuth', isAuthenticated);
         this.userIsAuthenticated = isAuthenticated;
       });
   }
 
   ngOnDestroy(): void {
-    if(this.authListenerSubs){
+    if (this.authListenerSubs){
       this.authListenerSubs.unsubscribe();
     }
   }
@@ -41,3 +41,5 @@ export class AppComponent {
     return this.userIsAuthenticated;
   }
 }
+
+

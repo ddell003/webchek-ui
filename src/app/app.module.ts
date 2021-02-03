@@ -9,7 +9,7 @@ import { SitesComponent } from './sites/sites.component';
 import { CreateComponent } from './sites/create/create.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -20,7 +20,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { EditComponent } from './sites/edit/edit.component';
 import { TestsComponent } from './sites/tests/tests.component';
 import { EntranceComponent } from './entrance/entrance.component';
-import { UsersComponent } from './users/users.component';
+// import { UsersComponent } from './users/users.component';
 
 
 
@@ -40,7 +40,7 @@ import { UsersComponent } from './users/users.component';
     EditComponent,
     TestsComponent,
     EntranceComponent,
-    UsersComponent,
+    // UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +51,8 @@ import { UsersComponent } from './users/users.component';
     AngularMaterialModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
