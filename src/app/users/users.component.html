@@ -1,150 +1,149 @@
-<!--<div class="row">-->
-<!--  <div class="col lg-12">-->
-<!--    <h2>Tests:-->
-<!--      <button mat-raised-button-->
-<!--      type="button"-->
-<!--      color="accent"-->
-<!--      style="float: right; background-color: #17a2b8;"-->
-<!--      >-->
-<!--        Create User</button>-->
-<!--    </h2>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class="row" *ngIf="createUser" >-->
-<!--  <div class="col lg-12">-->
-<!--    <mat-card>-->
-<!--      <mat-card-header style="background-color: #17a2b8 !important;">-->
-<!--        <mat-card-title>New Test</mat-card-title>-->
-<!--      </mat-card-header>-->
-<!--      <mat-card-content>-->
-<!--          <div class="row">-->
-<!--            <div class="col col-lg-4 col-md-6">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <input-->
-<!--                type="text"-->
-<!--                matInput-->
-<!--                [(ngModel)]="newTest.name"-->
-<!--                name="testName"-->
-<!--                required-->
-<!--                minlength=3-->
-<!--                #testName="ngModel"-->
-<!--                placeholder="Test Name"-->
-<!--                >-->
-<!--                <mat-error *ngIf="testName.invalid">Please enter a test name</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-2 col-md-6">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <input-->
-<!--                type="number"-->
-<!--                matInput-->
-<!--                ngModel-->
-<!--                name="frequencyAmount"-->
-<!--                required-->
-<!--                minlength=3-->
-<!--                #frequencyAmount="ngModel"-->
-<!--                placeholder="Frequency Amount ex. 15"-->
-<!--                [(ngModel)]="newTest.frequency_amount"-->
-<!--                >-->
-<!--                <mat-error *ngIf="frequencyAmount.invalid">Please frequency amount</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-3 col-md-6">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <mat-label>Frequency Type</mat-label>-->
-<!--                <mat-select-->
-<!--                ngModel-->
-<!--                required-->
-<!--                name="frequency"-->
-<!--                #frequency="ngModel"-->
-<!--                [(ngModel)]="newTest.frequency"-->
-<!--                >-->
-<!--                  <mat-option value="minutes">Minutes</mat-option>&lt;!&ndash;*ngFor="let test of site.tests; let i = index"&ndash;&gt;-->
-<!--                  <mat-option value="hours">Hours</mat-option>-->
-<!--                  <mat-option value="days">Days</mat-option>-->
-<!--                </mat-select>-->
-<!--                <mat-error *ngIf="frequency.invalid">Please select a frequency</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-3 col-md-6">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <mat-label>Sucess Criteria</mat-label>-->
-<!--                <mat-select-->
-<!--                ngModel-->
-<!--                required-->
-<!--                name="expected_status_code"-->
-<!--                #status="ngModel"-->
-<!--                [(ngModel)]="newTest.expected_status_code"-->
+<div class="row">
+  <div class="col lg-12">
+    <h2>Users:
+      <button mat-raised-button
+              type="button"
+              color="accent"
+              style="float: right; background-color: #17a2b8;"
+      >
+        Create User</button>
+    </h2>
+  </div>
+</div>
+<div class="row" *ngIf="createUser" >
+  <div class="col lg-12">
+    <mat-card>
+      <mat-card-header style="background-color: #17a2b8 !important;">
+        <mat-card-title>New User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col col-lg-4 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="newUser.name"
+                name="userName"
+                required
+                minlength=3
+                #testName="ngModel"
+                placeholder="User Name"
+              >
+              <mat-error *ngIf="userName.invalid">Please enter an user name</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-2 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <input
+                type="number"
+                matInput
+                ngModel
+                name="frequencyAmount"
+                required
+                minlength=3
+                #frequencyAmount="ngModel"
+                placeholder="Frequency Amount ex. 15"
+                [(ngModel)]="newTest.frequency_amount"
+              >
+              <mat-error *ngIf="frequencyAmount.invalid">Please frequency amount</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-3 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <mat-label>Frequency Type</mat-label>
+              <mat-select
+                ngModel
+                required
+                name="frequency"
+                #frequency="ngModel"
+                [(ngModel)]="newUser.frequency"
+              >
+                <mat-option value="minutes">Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
+                <mat-option value="hours">Hours</mat-option>
+                <mat-option value="days">Days</mat-option>
+              </mat-select>
+              <mat-error *ngIf="frequency.invalid">Please select a frequency</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-3 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <mat-label>Sucess Criteria</mat-label>
+              <mat-select
+                ngModel
+                required
+                name="expected_status_code"
+                #status="ngModel"
+                [(ngModel)]="newTest.expected_status_code"
 
-<!--                >-->
-<!--                  <mat-option *ngFor="let statusCode of statusCodes;"-->
-<!--                  [value]="statusCode.code">{{statusCode.code}} - {{statusCode.text}}-->
-<!--                </mat-option>-->
+              >
+                <mat-option *ngFor="let statusCode of statusCodes;"
+                            [value]="statusCode.code">{{statusCode.code}} - {{statusCode.text}}
+                </mat-option>
 
-<!--                </mat-select>-->
-<!--                <mat-error *ngIf="status.invalid">Please select a status</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-4 col-md-6">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <input-->
-<!--                type="text"-->
-<!--                matInput-->
-<!--                [(ngModel)]="newTest.url"-->
-<!--                name="url"-->
-<!--                required-->
-<!--                minlength=3-->
-<!--                #url="ngModel"-->
-<!--                placeholder="Enter Test Url"-->
-<!--                >-->
-<!--                <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="col col-lg-12">-->
-<!--              <mat-form-field class="col col-lg-12">-->
-<!--                <mat-label>Curl Request</mat-label>-->
-<!--                <textarea matInput rows="4"></textarea>-->
-<!--              </mat-form-field>-->
+              </mat-select>
+              <mat-error *ngIf="status.invalid">Please select a status</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-4 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="newTest.url"
+                name="url"
+                required
+                minlength=3
+                #url="ngModel"
+                placeholder="Enter Test Url"
+              >
+              <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col col-lg-12">
+            <mat-form-field class="col col-lg-12">
+              <mat-label>Curl Request</mat-label>
+              <textarea matInput rows="4"></textarea>
+            </mat-form-field>
 
-<!--            </div>-->
-<!--          </div>-->
+          </div>
+        </div>
 
 
-<!--        <br><br>-->
-<!--        <button mat-raised-button color="primary" type="button" (click)="uploadTest()">Submit</button>-->
-<!--        <button mat-raised-button color="warn" type="button" (click)="createTest = false" style="margin-left: 5px;">Cancel</button>-->
+        <br><br>
+        <button mat-raised-button color="primary" type="button" (click)="uploadTest()">Submit</button>
+        <button mat-raised-button color="warn" type="button" (click)="createTest = false" style="margin-left: 5px;">Cancel</button>
 
-<!--    </mat-card-content>-->
-<!--    </mat-card>-->
-<!--  </div>-->
-<!--  <hr>-->
-<!--</div>-->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <hr>
+</div>
 
-<!--<div class="row" *ngIf="users && users.length > 0">-->
-<!--  <div class="col lg-12">-->
-<!--    <table class="table table-striped table-hover">-->
-<!--      <thead>-->
-<!--        <tr>-->
-<!--          <th scope="col">Name</th>-->
-<!--          <th scope="col">Email</th>-->
-<!--          <th  scope="col">Actions</th>-->
+<div class="row" *ngIf="users && users.length > 0">
+  <div class="col lg-12">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th  scope="col">Actions</th>
 
-<!--        </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--        <tr *ngFor="let user of user; let i = index">-->
-<!--          <th scope="row" >{{user.fullname}}</th>-->
-<!--          <td >{{user.email}}</td>-->
-<!--          <td>-->
-<!--            <button mat-raised-button [matMenuTriggerFor]="menu" type="button" color="primary">Actions</button>-->
-<!--            <mat-menu #menu="matMenu">-->
-<!--              <button mat-menu-item type="button" (click)="edit(user)">Edit</button>-->
-<!--              <button mat-menu-item type="button" (click)="deleteUser(user)">Delete</button>-->
-<!--            </mat-menu>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
-
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of user; let i = index">
+        <th scope="row" >{{user.fullname}}</th>
+        <td >{{user.email}}</td>
+        <td>
+          <button mat-raised-button [matMenuTriggerFor]="menu" type="button" color="primary">Actions</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item type="button" (click)="edit(user)">Edit</button>
+            <button mat-menu-item type="button" (click)="deleteUser(user)">Delete</button>
+          </mat-menu>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

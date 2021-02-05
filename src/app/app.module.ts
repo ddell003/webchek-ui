@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { SitesComponent } from './sites/sites.component';
 import { CreateComponent } from './sites/create/create.component';
+import { UsersComponent } from './users/users.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,12 +23,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { EditComponent } from './sites/edit/edit.component';
 import { TestsComponent } from './sites/tests/tests.component';
 import { EntranceComponent } from './entrance/entrance.component';
-<<<<<<< HEAD
-// import { UsersComponent } from './users/users.component';
-=======
 import { EditTestComponent } from './sites/tests/edit/edit.component';
 import { LogsComponent } from './sites/tests/logs/logs.component';
->>>>>>> 25deaf97af1b3e57a8fc457199de0b1f349cdb43
 
 
 
@@ -38,6 +37,8 @@ import { LogsComponent } from './sites/tests/logs/logs.component';
     LandingComponent,
     SitesComponent,
     CreateComponent,
+    UsersComponent,
+    UserCreateComponent,
     HeaderComponent,
     LoginComponent,
     SignupComponent,
@@ -45,12 +46,8 @@ import { LogsComponent } from './sites/tests/logs/logs.component';
     EditComponent,
     TestsComponent,
     EntranceComponent,
-<<<<<<< HEAD
-    // UsersComponent,
-=======
     EditTestComponent,
     LogsComponent,
->>>>>>> 25deaf97af1b3e57a8fc457199de0b1f349cdb43
   ],
   imports: [
     BrowserModule,

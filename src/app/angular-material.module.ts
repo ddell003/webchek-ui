@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-//material imorts
+import { NgModule } from '@angular/core';
+ // material imorts
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  exports:[
+  exports: [
     MatInputModule,
     MatDialogModule,
     MatProgressSpinnerModule,
