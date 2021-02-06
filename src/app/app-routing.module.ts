@@ -8,6 +8,7 @@ import { CreateComponent } from './sites/create/create.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { EditComponent } from './sites/edit/edit.component';
 import { EditTestComponent } from './sites/tests/edit/edit.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'sites/edit/:id', component: EditComponent, canActivate: [AuthGuard]},
   { path: 'sites/:siteId/tests/:id', component: EditTestComponent, canActivate: [AuthGuard]},
   { path: 'users/user-create', component: UserCreateComponent, canActivate: [AuthGuard]},
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+
 ];
 
 @NgModule({

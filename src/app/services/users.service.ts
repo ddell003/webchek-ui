@@ -43,6 +43,14 @@ export class UsersService {
     return this.http.delete<User>(`${URL}apps/${user.id}`, {});
   }
 
+  createUser(user: User) {
+    return this.http.post<User>(`${URL}apps/${user.app_id}/users`, user);
+  }
+
+  updateUser(user: User) {
+    return this.http.put<User>(`${URL}apps/${user.app_id}/users/${user.id}`, user);
+  }
+
   getUserListener() {
     return this.userUpdated.asObservable();
   }

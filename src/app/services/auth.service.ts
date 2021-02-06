@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { User } from '../models/user.model';
-import { environment } from "../../environments/environment";
+import { environment } from '../../environments/environment';
 import { Account } from '../models/account.model';
 
 const URL = environment.apiUrl;

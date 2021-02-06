@@ -11,7 +11,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UserCreateComponent implements OnInit {
 
-  newUser: User = {api_token: '', created_at: '', owner: 0, updated_at: '', id: null, name: '', email: ''};
+  newUser: User = {app_id: '', api_token: '', created_at: '', owner: '', updated_at: '', id: null, name: '', email: ''};
 
   constructor(public userService: UsersService, private router: Router) { }
 
@@ -22,6 +22,7 @@ export class UserCreateComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  // tslint:disable-next-line:typedef
   onAddUser(form: NgForm){
     if (form.invalid){
       return;
@@ -30,8 +31,8 @@ export class UserCreateComponent implements OnInit {
     this.newUser.name = form.value.name;
     this.newUser.email = form.value.email;
     this.userService.addUser(this.newUser);
-    this.newUser = {api_token: '', created_at: '', owner: 0, updated_at: '', name: '', email: '', id: null};
+    this.newUser = {app_id: '', api_token: '', created_at: '', owner: '', updated_at: '', name: '', email: '', id: null};
     form.resetForm();
-    this.router.navigate(['/']);
+    this.router.navigate(['/users']);
   }
 }

@@ -5,7 +5,7 @@
               type="button"
               color="accent"
               style="float: right; background-color: #17a2b8;"
-      >
+              (click)="addUser()">
         Create User</button>
     </h2>
   </div>
@@ -27,92 +27,66 @@
                 name="userName"
                 required
                 minlength=3
-                #testName="ngModel"
+                #userName="ngModel"
                 placeholder="User Name"
               >
-              <mat-error *ngIf="userName.invalid">Please enter an user name</mat-error>
+              <mat-error *ngIf="userName.invalid">Please enter a user name</mat-error>
             </mat-form-field>
           </div>
-          <div class="col col-lg-2 col-md-6">
-            <mat-form-field class="col col-lg-12">
-              <input
-                type="number"
-                matInput
-                ngModel
-                name="frequencyAmount"
-                required
-                minlength=3
-                #frequencyAmount="ngModel"
-                placeholder="Frequency Amount ex. 15"
-                [(ngModel)]="newTest.frequency_amount"
-              >
-              <mat-error *ngIf="frequencyAmount.invalid">Please frequency amount</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col col-lg-3 col-md-6">
-            <mat-form-field class="col col-lg-12">
-              <mat-label>Frequency Type</mat-label>
-              <mat-select
-                ngModel
-                required
-                name="frequency"
-                #frequency="ngModel"
-                [(ngModel)]="newUser.frequency"
-              >
-                <mat-option value="minutes">Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
-                <mat-option value="hours">Hours</mat-option>
-                <mat-option value="days">Days</mat-option>
-              </mat-select>
-              <mat-error *ngIf="frequency.invalid">Please select a frequency</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col col-lg-3 col-md-6">
-            <mat-form-field class="col col-lg-12">
-              <mat-label>Sucess Criteria</mat-label>
-              <mat-select
-                ngModel
-                required
-                name="expected_status_code"
-                #status="ngModel"
-                [(ngModel)]="newTest.expected_status_code"
 
-              >
-                <mat-option *ngFor="let statusCode of statusCodes;"
-                            [value]="statusCode.code">{{statusCode.code}} - {{statusCode.text}}
-                </mat-option>
-
-              </mat-select>
-              <mat-error *ngIf="status.invalid">Please select a status</mat-error>
-            </mat-form-field>
-          </div>
           <div class="col col-lg-4 col-md-6">
             <mat-form-field class="col col-lg-12">
               <input
-                type="text"
+                type="email"
                 matInput
-                [(ngModel)]="newTest.url"
-                name="url"
+                [(ngModel)]="newUser.email"
+                name="email"
                 required
                 minlength=3
-                #url="ngModel"
-                placeholder="Enter Test Url"
+                #email="ngModel"
+                placeholder="Enter User email"
               >
-              <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>
+              <mat-error *ngIf="email.invalid">Please enter valid email</mat-error>
             </mat-form-field>
           </div>
-          <div class="col col-lg-12">
-            <mat-form-field class="col col-lg-12">
-              <mat-label>Curl Request</mat-label>
-              <textarea matInput rows="4"></textarea>
-            </mat-form-field>
 
+          <div class="col col-lg-3 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <mat-label>CreatedAt</mat-label>
+              <input
+                matInput [matDatepicker]="picker"
+                required
+                name="created_at"
+                #created_at="ngModel"
+                [(ngModel)]="newUser.created_at"
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="created_at.invalid">Please select a date</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col col-lg-3 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <mat-label>Owner</mat-label>
+              <mat-select
+                ngModel
+                required
+                name="owner"
+                #owner="ngModel"
+                [(ngModel)]="newUser.owner"
+              >
+                <mat-option value="yes">Yes</mat-option>
+                <mat-option value="no">No</mat-option>
+              </mat-select>
+              <mat-error *ngIf="owner.invalid">Please select if it is an owner</mat-error>
+            </mat-form-field>
           </div>
         </div>
 
-
         <br><br>
-        <button mat-raised-button color="primary" type="button" (click)="uploadTest()">Submit</button>
-        <button mat-raised-button color="warn" type="button" (click)="createTest = false" style="margin-left: 5px;">Cancel</button>
+        <button mat-raised-button color="primary" type="button" (click)="uploadUser()">Submit</button>
+        <button mat-raised-button color="warn" type="button" (click)="createUser = false" style="margin-left: 5px;">Cancel</button>
 
       </mat-card-content>
     </mat-card>
@@ -127,21 +101,16 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <th  scope="col">Actions</th>
-
+        <th scope="col">CreatedAt</th>
+        <th scope="col">Owner</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of user; let i = index">
-        <th scope="row" >{{user.fullname}}</th>
-        <td >{{user.email}}</td>
-        <td>
-          <button mat-raised-button [matMenuTriggerFor]="menu" type="button" color="primary">Actions</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item type="button" (click)="edit(user)">Edit</button>
-            <button mat-menu-item type="button" (click)="deleteUser(user)">Delete</button>
-          </mat-menu>
-        </td>
+      <tr *ngFor="let user of users; let i = index">
+        <th scope="row" >{{user.name}}</th>
+        <td>{{user.email}}</td>
+        <td>{{user.created_at}}</td>
+        <td>{{user.owner}}</td>
       </tr>
       </tbody>
     </table>
