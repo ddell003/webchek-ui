@@ -95,4 +95,8 @@ export class SitesService {
   testUrl(testUrl:string) {
     return this.http.post(`${URL}test_url`, {url:testUrl});
   }
+
+  runSiteTests(site: Site) {
+    return this.http.post<Site>(`${URL}apps/${site.id}/run`, []);
+  }
 }
