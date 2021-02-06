@@ -44,7 +44,7 @@ export class UsersService {
   }
 
   createUser(user: User) {
-    return this.http.post<User>(`${URL}apps/${user.app_id}/users`, user);
+    return this.http.post<User>(`${URL}users`, user);
   }
 
   updateUser(user: User) {
