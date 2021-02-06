@@ -28,7 +28,7 @@
                 required
                 minlength=3
                 #userName="ngModel"
-                placeholder="User Name"
+                placeholder="Full Name"
               >
               <mat-error *ngIf="userName.invalid">Please enter a user name</mat-error>
             </mat-form-field>
@@ -50,21 +50,21 @@
             </mat-form-field>
           </div>
 
-          <div class="col col-lg-3 col-md-6">
-            <mat-form-field class="col col-lg-12">
-              <mat-label>CreatedAt</mat-label>
-              <input
-                matInput [matDatepicker]="picker"
-                required
-                name="created_at"
-                #created_at="ngModel"
-                [(ngModel)]="newUser.created_at"
-              >
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="created_at.invalid">Please select a date</mat-error>
-            </mat-form-field>
-          </div>
+<!--          <div class="col col-lg-3 col-md-6">-->
+<!--            <mat-form-field class="col col-lg-12">-->
+<!--              <mat-label>CreatedAt</mat-label>-->
+<!--              <input-->
+<!--                matInput [matDatepicker]="picker"-->
+<!--                required-->
+<!--                name="created_at"-->
+<!--                #created_at="ngModel"-->
+<!--                [(ngModel)]="newUser.created_at"-->
+<!--              >-->
+<!--              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--              <mat-datepicker #picker></mat-datepicker>-->
+<!--              <mat-error *ngIf="created_at.invalid">Please select a date</mat-error>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
 
           <div class="col col-lg-3 col-md-6">
             <mat-form-field class="col col-lg-12">
@@ -82,7 +82,25 @@
               <mat-error *ngIf="owner.invalid">Please select if it is an owner</mat-error>
             </mat-form-field>
           </div>
+
+          <div class="col col-lg-4 col-md-6">
+            <mat-form-field class="col col-lg-12">
+              <input
+                type="password"
+                matInput
+                [(ngModel)]="newUser.password"
+                name="password"
+                required
+                minlength=3
+                #password="ngModel"
+                placeholder="Enter User password"
+              >
+              <mat-error *ngIf="password.invalid">Please enter valid password</mat-error>
+            </mat-form-field>
+          </div>
+
         </div>
+
 
         <br><br>
         <button mat-raised-button color="primary" type="button" (click)="uploadUser()">Submit</button>

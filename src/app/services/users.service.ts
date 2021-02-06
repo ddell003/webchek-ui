@@ -44,11 +44,12 @@ export class UsersService {
   }
 
   createUser(user: User) {
+    console.log("in service")
     return this.http.post<User>(`${URL}users`, user);
   }
 
   updateUser(user: User) {
-    return this.http.put<User>(`${URL}apps/${user.app_id}/users/${user.id}`, user);
+    return this.http.put<User>(`${URL}users/${user.id}`, user);
   }
 
   getUserListener() {

@@ -37,7 +37,8 @@ export class UsersComponent implements OnInit {
     id: null,
     name: '',
     owner: '',
-    updated_at: null
+    updated_at: null,
+    password: ''
   };
 
   constructor(private userService: UsersService) {
