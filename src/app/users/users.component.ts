@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { Owner } from 'src/app/models/owner.model';
 import { UsersService } from 'src/app/services/users.service';
 import {Test} from '../models/test.model';
 import {Log} from '../models/log.model';
@@ -24,7 +25,8 @@ export class UsersComponent implements OnInit {
    */
 
 
-  users: User[];
+  users: User[] = [];
+  owners: Owner[];
   id = null;
   isLoading = true;
   createUser = false;
@@ -36,7 +38,7 @@ export class UsersComponent implements OnInit {
     email: '',
     id: null,
     name: '',
-    owner: '',
+    owner: 'Yes',
     updated_at: null,
     password: ''
   };
@@ -45,14 +47,26 @@ export class UsersComponent implements OnInit {
   }
 
   @Input() user: User;
+  @Input() owner: Owner;
 
   ngOnInit(): void {
+    this.owners = this.userService.getOwners();
     this.newUser = JSON.parse(JSON.stringify(this.defaultUser));
   }
 
   // tslint:disable-next-line:typedef
   addUser() {
     this.createUser = !this.createUser;
+  }
+
+  // tslint:disable-next-line:typedef
+  formatOwner(viewValue) {
+    const searched = this.owners.find(value => value.viewValue === viewValue);
+    if (searched){
+      return searched.viewValue;
+    }else{
+      return '---';
+    }
   }
 
   // tslint:disable-next-line:typedef

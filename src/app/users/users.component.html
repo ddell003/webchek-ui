@@ -74,10 +74,12 @@
                 required
                 name="owner"
                 #owner="ngModel"
-                [(ngModel)]="newUser.owner"
-              >
-                <mat-option value="yes">Yes</mat-option>
-                <mat-option value="no">No</mat-option>
+                [(ngModel)]="newUser.owner">
+<!--                <mat-option value="yes">Yes</mat-option>-->
+<!--                <mat-option value="no">No</mat-option>-->
+                  <mat-option *ngFor="let owner of owners" [value]="owner.viewValue">
+                  {{owner.viewValue}}
+                </mat-option>
               </mat-select>
               <mat-error *ngIf="owner.invalid">Please select if it is an owner</mat-error>
             </mat-form-field>
@@ -128,7 +130,7 @@
         <th scope="row" >{{user.name}}</th>
         <td>{{user.email}}</td>
         <td>{{user.created_at}}</td>
-        <td>{{user.owner}}</td>
+        <td>{{formatOwner(user.owner)}}</td>
       </tr>
       </tbody>
     </table>

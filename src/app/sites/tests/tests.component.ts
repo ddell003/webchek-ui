@@ -13,7 +13,7 @@ import { Log } from 'src/app/models/log.model';
 })
 export class TestsComponent implements OnInit {
 
-  statusCodes:StatusCode[];
+  statusCodes: StatusCode[];
   id = null;
   isLoading = true;
   createTest = false;

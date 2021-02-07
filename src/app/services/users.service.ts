@@ -3,6 +3,7 @@ import { User } from '../models/user.model';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import {Owner} from "../models/owner.model";
 // import { Test } from '../models/test.model';
 // import { Log } from '../models/log.model';
 
@@ -15,8 +16,16 @@ const USER_URL = `${URL}apps`;
 export class UsersService {
 
   private users: User[] = [];
+  private owners: Owner[] = [
+    {viewValue: 'Yes'},
+    {viewValue: 'No'}
+  ];
   private userUpdated = new Subject<User[]>();
   constructor(private http: HttpClient) { }
+
+  getOwners() {
+    return [...this.owners];
+  }
 
   getUsers() {
     this.http.get<User[]>(USER_URL)
@@ -44,7 +53,7 @@ export class UsersService {
   }
 
   createUser(user: User) {
-    console.log("in service")
+    console.log('in service');
     return this.http.post<User>(`${URL}users`, user);
   }
 

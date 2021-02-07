@@ -38,7 +38,7 @@ export class SitesService {
   constructor(private http: HttpClient) { }
 
   getStatusCodes() {
-    return [...this.statusCodes]
+    return [...this.statusCodes];
   }
 
   getSites() {
