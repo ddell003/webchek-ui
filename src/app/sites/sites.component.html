@@ -31,7 +31,7 @@
           <app-tests [site]="site" [dashboard]="true" *ngIf="site.tests.length > 0"></app-tests>
 
           <mat-action-row>
-            <button mat-raised-button style="background-color:  #1976d2; color:#fff">RUN</button>
+            <button mat-raised-button style="background-color:  #1976d2; color:#fff" (click)="runSiteTests(site)" type="button">RUN</button>
             <button mat-raised-button color="primary" [routerLink]="'sites/edit/'+site.id">EDIT</button>
             <button mat-raised-button color="warn">DELETE</button>
           </mat-action-row>

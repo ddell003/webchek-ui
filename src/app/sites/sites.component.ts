@@ -76,6 +76,16 @@ export class SitesComponent implements OnInit, OnDestroy {
     return found;
   }
 
+  runSiteTests(site: Site){
+    console.log("testinggg...")
+    this.siteService.runSiteTests(site)
+    .subscribe((body)=> {
+      console.log("site tests ran")
+      const index = this.sites.findIndex(value =>value.id == site.id)
+      this.sites[index] = body;
+    });
+  }
+
   deleteSite(site: Site) {
     if(confirm("Are you sure you want to delete the site: "+site.name)) {
       const index = this.sites.findIndex(value =>value.id == site.id)
