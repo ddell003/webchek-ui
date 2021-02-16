@@ -38,7 +38,7 @@ export class UsersComponent implements OnInit {
     email: '',
     id: null,
     name: '',
-    owner: 'Yes',
+    owner: '',
     updated_at: null,
     password: ''
   };
