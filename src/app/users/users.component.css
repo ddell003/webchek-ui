@@ -1,0 +1,44 @@
+.mat-raised-button.mat-primary{
+  background-color: #1976d2;
+}
+mat-card-header{
+  background: #599091;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  color:white;
+  margin-top: 15px;
+}
+
+mat-card-content{
+  padding: 10px;
+}
+
+mat-card{
+  padding:0;
+}
+
+.red{
+  color:red;
+}
+.green{
+  color:green;
+}
+.blink{
+  color:green;
+  animation: blink 2s ease-in infinite;
+}
+@keyframes blink {
+  from, to { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+.panel-header{
+  background: #599091;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left:15px;
+  padding-right:15px;
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

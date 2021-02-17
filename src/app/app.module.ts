@@ -7,9 +7,12 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { SitesComponent } from './sites/sites.component';
 import { CreateComponent } from './sites/create/create.component';
+import { UsersComponent } from './users/users.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -34,6 +37,8 @@ import { LogsComponent } from './sites/tests/logs/logs.component';
     LandingComponent,
     SitesComponent,
     CreateComponent,
+    UsersComponent,
+    UserCreateComponent,
     HeaderComponent,
     LoginComponent,
     SignupComponent,
@@ -53,8 +58,8 @@ import { LogsComponent } from './sites/tests/logs/logs.component';
     AngularMaterialModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]

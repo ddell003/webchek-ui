@@ -33,7 +33,7 @@
           <mat-action-row>
             <button mat-raised-button style="background-color:  #1976d2; color:#fff" (click)="runSiteTests(site)" type="button">RUN</button>
             <button mat-raised-button color="primary" [routerLink]="'sites/edit/'+site.id">EDIT</button>
-            <button mat-raised-button color="warn" (click)="deleteSite(site)">DELETE</button>
+            <button mat-raised-button color="warn">DELETE</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
@@ -51,4 +51,3 @@
 
   <p *ngIf="sites.length === 0" class="mat-body-1 info-text">No sites added yet!</p>
 </div>
-

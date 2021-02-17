@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-//material imorts
+import { NgModule } from '@angular/core';
+ // material imorts
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,9 +12,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
-  exports:[
+  exports: [
     MatInputModule,
     MatDialogModule,
     MatProgressSpinnerModule,
@@ -27,6 +29,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatTooltipModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 

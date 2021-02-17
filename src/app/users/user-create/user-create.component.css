@@ -1,0 +1,27 @@
+
+.mat-raised-button.mat-primary{
+  background-color: #1976d2;
+}
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+.mat-radio-button {
+  margin-right:1rem;
+}
+
+.blink{
+  color:green;
+  animation: blink 2s ease-in infinite;
+}
+.black{
+  color:#212529;
+}
+.mat-expansion-panel-header-description, .mat-icon {
+  color:#212529;
+}
+@keyframes blink {
+  from, to { opacity: 1 }
+  50% { opacity: 0 }
+}
