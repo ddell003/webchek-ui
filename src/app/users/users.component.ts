@@ -4,6 +4,8 @@ import { Owner } from 'src/app/models/owner.model';
 import { UsersService } from 'src/app/services/users.service';
 import {Test} from '../models/test.model';
 import {Log} from '../models/log.model';
+import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 
 
@@ -42,6 +44,8 @@ export class UsersComponent implements OnInit {
     updated_at: null,
     password: ''
   };
+  editingUser = null;
+  private userSubscription: Subscription;
 
   constructor(private userService: UsersService) {
   }
@@ -52,11 +56,22 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.owners = this.userService.getOwners();
     this.newUser = JSON.parse(JSON.stringify(this.defaultUser));
+    this.userService.getUsers();
+    this.userSubscription = this.userService.getUserListener()
+      .subscribe((users: User[])=>{
+          this.users = users;
+          this.isLoading = false;
+          console.log("users", users);
+      });
   }
 
   // tslint:disable-next-line:typedef
   addUser() {
     this.createUser = !this.createUser;
+  }
+
+  getDate(date) {
+    return moment(date).format('MMMM Do YYYY');
   }
 
   // tslint:disable-next-line:typedef
@@ -72,7 +87,6 @@ export class UsersComponent implements OnInit {
   // tslint:disable-next-line:typedef
   deleteUser(user: User) {
     if (confirm('Are you sure you want to delete the user: ' + user.name)) {
-      console.log('Implement delete functionality here');
       const index = this.users.findIndex(value => value.id === user.id);
       this.users.splice(index, 1);
       this.userService.deleteUser(user)
@@ -80,6 +94,24 @@ export class UsersComponent implements OnInit {
           console.log('user deleted');
         });
     }
+  }
+
+  editUser(user: User){
+    console.log("editing users", user);
+    this.editingUser = user.id;
+
+  }
+
+  updateUser(user:User){
+    console.log("updating user");
+    this.userService.updateUser(user).subscribe((body) => {
+      console.log('user updated', body);
+      this.editingUser = null;
+
+    });;
+  }
+  cancelEdit(){
+    this.editingUser = null;
   }
 
   // edit(user: User){

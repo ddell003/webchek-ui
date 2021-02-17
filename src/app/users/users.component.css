@@ -32,3 +32,13 @@ mat-card{
   50% { opacity: 0 }
 }
 
+.panel-header{
+  background: #599091;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left:15px;
+  padding-right:15px;
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

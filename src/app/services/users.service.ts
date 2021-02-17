@@ -9,7 +9,7 @@ import {Owner} from "../models/owner.model";
 
 
 const URL = environment.apiUrl;
-const USER_URL = `${URL}apps`;
+const USER_URL = `${URL}users`;
 @Injectable({
   providedIn: 'root'
 })
@@ -49,7 +49,7 @@ export class UsersService {
   }
 
   deleteUser(user: User) {
-    return this.http.delete<User>(`${URL}apps/${user.id}`, {});
+    return this.http.delete<User>(`${URL}users/${user.id}`, {});
   }
 
   createUser(user: User) {
