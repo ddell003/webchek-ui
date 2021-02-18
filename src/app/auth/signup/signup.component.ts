@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
 
+  loading = false;
+
   ngOnInit(): void {
   }
 
@@ -20,12 +22,14 @@ export class SignupComponent implements OnInit {
     if(form.invalid){
       return;
     }
+
     const account:Account = {
       name: form.value.account,
       fullname: form.value.fullname,
       email: form.value.email,
       password: form.value.password,
     };
+    this.loading = true;
     this.authService.createAccount(account);
 
   }

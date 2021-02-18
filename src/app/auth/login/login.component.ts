@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private authStatusSub: Subscription;
   isloading = false;
+  submitting = false;
   error = false;
 
   constructor(private authService: AuthService) { }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     .subscribe(
       authStatus => {
         this.isloading = false;
+        this.submitting = false;
         this.error = true;
       }
     );
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(form.invalid){
       return;
     }
+    this.submitting = true;
     this.isloading = true;
     const loggedin = this.authService.login(form.value.email, form.value.password)
   }

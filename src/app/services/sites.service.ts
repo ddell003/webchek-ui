@@ -34,6 +34,7 @@ export class SitesService {
     {code:"504", text:"Gateway TimeOut"},
   ]
   private siteUpdated = new Subject<Site[]>();
+  private siteCreated = new Subject<Site>();
 
   constructor(private http: HttpClient) { }
 
@@ -65,7 +66,7 @@ export class SitesService {
       .subscribe((body:Site)=> {
         this.sites.push(body)
         this.siteUpdated.next([...this.sites]);
-
+        this.siteCreated.next(body);
       });
   }
 
@@ -90,6 +91,10 @@ export class SitesService {
 
   getSiteListener() {
     return this.siteUpdated.asObservable();
+  }
+
+  getNewSiteListener() {
+    return this.siteCreated.asObservable();
   }
 
   testUrl(testUrl:string) {

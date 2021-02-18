@@ -4,6 +4,7 @@ import { SitesService } from '../services/sites.service';
 import {Subscription} from 'rxjs';
 import { Test } from '../models/test.model';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sites',
@@ -15,8 +16,9 @@ export class SitesComponent implements OnInit, OnDestroy {
   sites: Site[] = [];
   isLoading = true;
   private siteSubscription: Subscription;
+  private newSiteSub: Subscription;
 
-  constructor(public siteService: SitesService) {
+  constructor(public siteService: SitesService, private router: Router) {
 
   }
 
@@ -28,10 +30,17 @@ export class SitesComponent implements OnInit, OnDestroy {
           this.sites = sites;
           this.isLoading = false;
       });
+
+    this.newSiteSub = this.siteService.getNewSiteListener()
+    .subscribe((site: Site)=>{
+        console.log("new site created", site)
+        this.router.navigate(['/sites/edit/'+site.id]);
+    });
   }
 
   ngOnDestroy(): void {
     this.siteSubscription.unsubscribe;
+    this.newSiteSub.unsubscribe;
   }
 
   getStatusClass(site){
