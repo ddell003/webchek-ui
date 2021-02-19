@@ -5,6 +5,8 @@ import {Subscription} from 'rxjs';
 import { Test } from '../models/test.model';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-sites',
@@ -15,10 +17,13 @@ export class SitesComponent implements OnInit, OnDestroy {
 
   sites: Site[] = [];
   isLoading = true;
+  toggledSites = [];
   private siteSubscription: Subscription;
   private newSiteSub: Subscription;
+  private userSubscription: Subscription;
+  usersLoaded = false;
 
-  constructor(public siteService: SitesService, private router: Router) {
+  constructor(public siteService: SitesService, private router: Router, private userService: UsersService) {
 
   }
 
@@ -36,11 +41,30 @@ export class SitesComponent implements OnInit, OnDestroy {
         console.log("new site created", site)
         this.router.navigate(['/sites/edit/'+site.id]);
     });
+    this.userService.getUsers();
+    this.userSubscription = this.userService.getUserListener()
+        .subscribe((users: User[])=>{
+          this.usersLoaded = true;
+        });
   }
 
   ngOnDestroy(): void {
     this.siteSubscription.unsubscribe;
     this.newSiteSub.unsubscribe;
+    this.userSubscription.unsubscribe();
+  }
+
+  toggleSite(site: Site){
+
+    if(this.toggledSites.includes(site.id)){
+      const index = this.toggledSites.indexOf(site.id);
+      if (index > -1) {
+        this.toggledSites.splice(index, 1);
+      }
+    }
+    else{
+      this.toggledSites.push(site.id);
+    }
   }
 
   getStatusClass(site){

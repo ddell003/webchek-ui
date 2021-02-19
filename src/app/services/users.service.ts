@@ -31,9 +31,20 @@ export class UsersService {
     this.http.get<User[]>(USER_URL)
       .subscribe((body) => {
         this.users = body;
-        console.log(body);
+        console.log("fetching users from api..");
         this.userUpdated.next([...this.users]);
       });
+  }
+
+  getLoadedUsers() {
+    if(this.users.length > 0){
+      return [...this.users]
+    }
+    else{
+      console.log("couldnt find users....")
+      this.getUsers();
+      return null;
+    }
   }
 
   getUser(id) {

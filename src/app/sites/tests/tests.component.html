@@ -25,6 +25,7 @@
                 type="text"
                 matInput
                 [(ngModel)]="newTest.name"
+                matTooltip="What is the name of this test? Ex. Test landing page works"
                 name="testName"
                 required
                 minlength=3
@@ -42,6 +43,7 @@
                 required
                 name="frequency"
                 #frequency="ngModel"
+                matTooltip="How often should this test run?"
                 [(ngModel)]="newTest.frequency"
                 >
                   <mat-option value="minutes">15 Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
@@ -58,6 +60,7 @@
                 ngModel
                 required
                 name="expected_status_code"
+                matTooltip="What is the expected result of the test?"
                 #status="ngModel"
                 [(ngModel)]="newTest.expected_status_code"
 
@@ -83,6 +86,28 @@
                 placeholder="Enter Test Url"
                 >
                 <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col col-lg-6 col-md-6">
+              <mat-form-field class="col col-lg-12">
+                <mat-label>Users To Email:</mat-label>
+                <mat-select
+                ngModel
+                multiple
+                [compareWith]="compareFn"
+                name="users"
+                #testUsers="ngModel"
+                [(ngModel)]="newTest.users"
+                matTooltip="Select Users to receive email upon test failure"
+
+                >
+                  <mat-option *ngFor="let user of users;"
+
+                  [value]="user">{{user.name}}
+                </mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="testUsers.invalid">Please select a status</mat-error>
               </mat-form-field>
             </div>
             <div class="col col-lg-12">
@@ -130,6 +155,12 @@
               [matTooltip]="getStatusMssg(test.latest)"
               >
                 circle
+              </mat-icon>
+              <mat-icon aria-hidden="true" aria-label="Status"
+              style="margin-right: 15px; float:right"
+              [matTooltip]="getTestUsers(test)"
+              >
+              supervisor_account
               </mat-icon>
 
           </td>

@@ -1,4 +1,5 @@
 import { Log } from "./log.model";
+import { User } from "./user.model";
 
 export interface Test {
   id: string;
@@ -11,5 +12,7 @@ export interface Test {
   frequency_amount:string;
   url:string;
   latest?:Log;
+  users?:User[];
+  logs?:[];
 
 }

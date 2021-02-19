@@ -86,6 +86,11 @@ export class SitesService {
   }
 
   updateTest(test: Test) {
+    if(test.hasOwnProperty("users")){
+      const users = test.users.map((value) => {return {id:value, name:"", email:""}})
+      console.log("users edited", users);
+      //test.users = users;
+    }
     return this.http.put<Test>(`${URL}apps/${test.app_id}/tests/${test.id}`, test);
   }
 

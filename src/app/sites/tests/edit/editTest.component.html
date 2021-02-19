@@ -4,7 +4,7 @@
     <mat-spinner *ngIf="isLoading"></mat-spinner>
   </div>
 </div>
-  <div class="row" *ngIf="! isLoading">
+  <div class="row" *ngIf="! isLoading && ! loadingUsers">
     <div class="col col-lg-8 offset-lg-2 col-md-12">
       <mat-card>
         <mat-card-header style="display:flex">
@@ -19,6 +19,7 @@
                   type="text"
                   matInput
                   [(ngModel)]="test.name"
+                  matTooltip="What is the name of this test? Ex. Test landing page works"
                   name="testName"
                   required
                   minlength=3
@@ -37,6 +38,7 @@
                   name="frequency"
                   #frequency="ngModel"
                   [(ngModel)]="test.frequency"
+                  matTooltip="How often should this test run?"
                   >
                     <mat-option value="minutes">15 Minutes</mat-option><!--*ngFor="let test of site.tests; let i = index"-->
                     <mat-option value="hours">Hour</mat-option>
@@ -53,6 +55,7 @@
                   required
                   name="expected_status_code"
                   #status="ngModel"
+                  matTooltip="What is the expected result of the test?"
                   [(ngModel)]="test.expected_status_code"
 
                   >
@@ -78,6 +81,28 @@
                   placeholder="Enter Test Url"
                   >
                   <mat-error *ngIf="url.invalid">Please enter valid url</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col col-lg-6 col-md-6">
+                <mat-form-field class="col col-lg-12">
+                  <mat-label>Users To Email:</mat-label>
+                  <mat-select
+                  ngModel
+                  multiple
+                  [compareWith]="compareFn"
+                  name="users"
+                  #testUsers="ngModel"
+                  [(ngModel)]="test.users"
+                  matTooltip="Select Users to receive email upon test failure"
+
+                  >
+                    <mat-option *ngFor="let user of users;"
+
+                    [value]="user">{{user.name}}
+                  </mat-option>
+
+                  </mat-select>
+                  <mat-error *ngIf="testUsers.invalid">Please select a status</mat-error>
                 </mat-form-field>
               </div>
               <div class="col col-lg-12">

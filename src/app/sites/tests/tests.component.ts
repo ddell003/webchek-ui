@@ -1,19 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Site } from 'src/app/models/site.model';
 import { StatusCode } from 'src/app/models/statusCode.model';
 import { Test } from 'src/app/models/test.model';
 import { SitesService } from 'src/app/services/sites.service';
 import * as moment from 'moment';
 import { Log } from 'src/app/models/log.model';
+import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-tests',
   templateUrl: './tests.component.html',
   styleUrls: ['./tests.component.css']
 })
-export class TestsComponent implements OnInit {
+export class TestsComponent implements OnInit, OnDestroy {
 
   statusCodes: StatusCode[];
+  private userSubscription: Subscription;
   id = null;
   isLoading = true;
   createTest = false;
@@ -29,7 +33,9 @@ export class TestsComponent implements OnInit {
     expected_status_code:"200",
     created_at:null,
   }
-  constructor(private siteService: SitesService) {}
+  loadingUsers = true;
+  users: User[] = [];
+  constructor(private siteService: SitesService, private userService:UsersService) {}
 
 
   @Input() site:Site;
@@ -41,10 +47,38 @@ export class TestsComponent implements OnInit {
     if(this.site){
       this.newTest.app_id = this.site.id;
     }
+
+    const loadedUsers = this.userService.getLoadedUsers();
+    this.users = (loadedUsers) ? loadedUsers : [];
+        this.userSubscription = this.userService.getUserListener()
+        .subscribe((users: User[])=>{
+            this.users = users;
+            this.loadingUsers = false;
+        });
+  }
+  ngOnDestroy(){
+    this.userSubscription.unsubscribe();
   }
 
   addTest(){
     this.createTest = ! this.createTest;
+  }
+
+  compareFn(user1: User, user2: User) {
+    return user1 && user2 ? user1.id === user2.id : user1 === user2;
+  }
+
+  getTestUsers(test){
+
+    if(test.users.length == 0){
+      return "No users have been set";
+    }
+
+    return "Users to Alert: "+test.users.map(function(elem){
+      return elem.name;
+  }).join(", ");
+
+
   }
 
   formatCode(code) {

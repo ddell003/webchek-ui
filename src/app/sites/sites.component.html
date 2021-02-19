@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <div class="container">
-  <div class="row" *ngIf="sites.length > 0">
+  <!--<div class="row" *ngIf="sites.length > 0">
     <div class="col col-md-4" *ngFor="let site of sites; let i = index" style="margin-bottom:15px;">
       <mat-accordion multi="true" *ngIf="sites.length > 0">
         <mat-expansion-panel>
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header style="display: flex;">
 
             <mat-panel-title>
               {{site.name}}
@@ -37,6 +37,54 @@
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
+    </div>
+  </div>-->
+  <div class="row" *ngIf="sites.length > 0 && usersLoaded">
+    <div class="col col-md-4" *ngFor="let site of sites; let i = index" style="margin-bottom:15px;">
+      <div class="panel" style="background-color: #fff;">
+        <div class="panel-header" (click)="toggleSite(site)">
+          <div class="row">
+            <div class="col col-lg-7">
+              <h3>{{site.name}}</h3>
+            </div>
+            <div class="col col-lg-5">
+
+                <span style="float: right;">
+                  <mat-icon aria-hidden="false" aria-label="Status" class="green" *ngIf="hasStatus('passed', site.tests)" [matTooltip]="'Has Passing Tests'">circle</mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="Status" class="blink" *ngIf="hasStatus('running', site.tests)" [matTooltip]="'Has Running Tests'">circle</mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="Status" class="red" *ngIf="hasStatus('failed', site.tests)" [matTooltip]="'Has Failing Tests'">circle</mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="Status" class="black" *ngIf="hasStatus('new', site.tests)" [matTooltip]="'Has New Tests'">circle</mat-icon>
+
+                  <mat-icon aria-hidden="false" aria-label="Status" class="black" *ngIf="!this.toggledSites.includes(site.id)" matTooltip="Toggle">keyboard_arrow_down</mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="Status" class="black" *ngIf="this.toggledSites.includes(site.id)" matTooltip="Toggle">keyboard_arrow_up</mat-icon>
+
+                </span>
+
+                <span *ngIf="site.status == 0" class="red">
+                    [Inactive]
+                </span>
+                <span *ngIf="showNoTests(site)" class="red">
+                  [No Tests]
+              </span>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-body" [hidden]="! this.toggledSites.includes(site.id)">
+          <hr>
+          <div class="row">
+            <div class="col col-lg-12">
+              <app-tests [site]="site" [dashboard]="true" *ngIf="site.tests.length > 0"></app-tests>
+            </div>
+            </div>
+            <mat-action-row>
+              <button mat-raised-button style="background-color:  #1976d2; color:#fff" (click)="runSiteTests(site)" type="button" style="margin-right: 3px; background-color: #1976d2; color:white">RUN</button>
+              <button mat-raised-button color="primary" [routerLink]="'sites/edit/'+site.id" style="margin-right: 3px;">EDIT</button>
+              <button mat-raised-button color="warn" (click)="deleteSite(site)">DELETE</button>
+            </mat-action-row>
+        </div>
+      </div>
     </div>
   </div>
 </div>
