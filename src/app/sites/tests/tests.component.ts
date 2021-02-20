@@ -142,6 +142,9 @@ export class TestsComponent implements OnInit, OnDestroy {
   }
 
   uploadTest(){
+    if(this.newTest.name == '' || this.newTest.frequency == '' || this.newTest.url == ''){
+      return;
+    }
     console.log("submit form", this.newTest)
     this.createTest = false;
     if(this.newTest.frequency === "minutes"){
@@ -155,6 +158,7 @@ export class TestsComponent implements OnInit, OnDestroy {
         console.log("test created", body)
         this.site.tests.push(body);
         this.newTest = JSON.parse(JSON.stringify(this.defaultTest));
+        this.newTest.app_id = this.site.id;
       });
   }
 
