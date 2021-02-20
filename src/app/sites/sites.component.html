@@ -1,44 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <div class="container">
-  <!--<div class="row" *ngIf="sites.length > 0">
-    <div class="col col-md-4" *ngFor="let site of sites; let i = index" style="margin-bottom:15px;">
-      <mat-accordion multi="true" *ngIf="sites.length > 0">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header style="display: flex;">
 
-            <mat-panel-title>
-              {{site.name}}
-            </mat-panel-title>
-            <mat-panel-description>
-              <span style="margin-left: 5px; float:right">
-                <mat-icon aria-hidden="false" aria-label="Status" class="green" *ngIf="hasStatus('passed', site.tests)" [matTooltip]="'Has Passing Tests'">circle</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Status" class="blink" *ngIf="hasStatus('running', site.tests)" [matTooltip]="'Has Running Tests'">circle</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Status" class="red" *ngIf="hasStatus('failed', site.tests)" [matTooltip]="'Has Failing Tests'">circle</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Status" class="black" *ngIf="hasStatus('new', site.tests)" [matTooltip]="'Has New Tests'">circle</mat-icon>
-              </span>
-
-              <span *ngIf="site.status == 0" class="red">
-                  [Inactive]
-              </span>
-              <span *ngIf="showNoTests(site)" class="red">
-                [No Tests]
-            </span>
-            </mat-panel-description>
-
-          </mat-expansion-panel-header>
-
-          <app-tests [site]="site" [dashboard]="true" *ngIf="site.tests.length > 0"></app-tests>
-
-          <mat-action-row>
-            <button mat-raised-button style="background-color:  #1976d2; color:#fff" (click)="runSiteTests(site)" type="button">RUN</button>
-            <button mat-raised-button color="primary" [routerLink]="'sites/edit/'+site.id">EDIT</button>
-            <button mat-raised-button color="warn" (click)="deleteSite(site)">DELETE</button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-  </div>-->
   <div class="row" *ngIf="sites.length > 0 && usersLoaded">
     <div class="col col-md-4" *ngFor="let site of sites; let i = index" style="margin-bottom:15px;">
       <div class="panel" style="background-color: #fff;">
@@ -96,6 +59,12 @@
 
 <div class="main" *ngIf="!isLoading">
 
+  <div class="row" *ngIf="sites.length === 0">
+    <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+      <div class="alert alert-primary" role="alert">
+        No Sites To Track Yet!
+      </div>
+    </div>
+  </div>
 
-  <p *ngIf="sites.length === 0" class="mat-body-1 info-text">No sites added yet!</p>
 </div>

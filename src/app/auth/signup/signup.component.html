@@ -2,11 +2,11 @@
 <br><br>
   <div class="row">
     <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Create an account</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+      <div class="panel">
+        <div class="panel-header">
+          <h2 style="text-align: center;">Create an Account</h2>
+        </div>
+        <div class="panel-body">
           <div class="row" *ngIf="loading">
             <div class="col col-lg-2 offset-lg-5 col-md-6 offset-md-3">
               <mat-spinner></mat-spinner>
@@ -74,9 +74,11 @@
           <br><br>
           <button mat-raised-button color="primary" type="submit">Signup</button>
           <button mat-raised-button color="accent" type="button" routerLink="" style="margin-left:5px;">Back</button>
+          <span style="margin-left: 5px;">Already have an account? <a href="login">Login</a></span>
       </form>
-    </mat-card-content>
-      </mat-card>
+        </div>
+      </div>
+
     </div>
 
   </div>
