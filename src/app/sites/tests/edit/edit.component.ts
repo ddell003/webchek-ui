@@ -39,23 +39,25 @@ export class EditTestComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    console.log("editting")
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("id")) {
-
+        console.log("site_id", paramMap.has("id"))
         this.id = paramMap.get("id");
         this.siteId = paramMap.get("siteId");
         console.log("site", this.siteId)
         this.isLoading = true;
         this.siteService.getTest(this.id, this.siteId).subscribe(testData => {
-          console.log("getting test", this.id)
           this.isLoading = false;
           this.test = testData
           this.statusCodes = this.siteService.getStatusCodes();
-          console.log("found test", this.test)
 
         });
         const loadedUsers = this.userService.getLoadedUsers();
         this.users = (loadedUsers) ? loadedUsers : [];
+        if(this.users){
+          this.loadingUsers = false;
+        }
         this.userSubscription = this.userService.getUserListener()
         .subscribe((users: User[])=>{
             this.users = users;
